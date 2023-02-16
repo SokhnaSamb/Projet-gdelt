@@ -1,0 +1,34 @@
+#### Question 1 :
+
+- Afficher le nombre d'événements qu’il y a eu pour chaque triplet (jour, pays de l’évènement, langue de l’article) :
+SELECT date, country, article_language, COUNT(globaleventid) AS num_events FROM requete_1_events_day GROUP BY date, country, article_language;
+
+- Afficher le nombre d’articles qu’il y a eu pour chaque triplet (jour, pays de l’évènement, langue de l’article) :
+SELECT date, country, article_language, COUNT(article_url) AS num_articles FROM requete_1_articles_day GROUP BY date, country, article_language;
+
+- Afficher le nombre d'événements qu’il y a eu pour chaque triplet (mois, pays de l’évènement, langue de l’article) :
+SELECT monthyear, country, article_language, COUNT(globaleventid) AS num_events FROM requete_1_events_month GROUP BY monthyear, country, article_language;
+
+- Afficher le nombre d’articles qu’il y a eu pour chaque triplet (mois, pays de l’évènement, langue de l’article) :
+SELECT monthyear, country, article_language, COUNT(article_url) AS num_articles FROM requete_1_articles_month GROUP BY monthyear, country, article_language;
+
+- Afficher le nombre d'événements qu’il y a eu pour chaque triplet (année, pays de l’évènement, langue de l’article) :
+SELECT year, country, article_language, COUNT(globaleventid) AS num_events FROM requete_1_events_year GROUP BY year, country, article_language;
+
+- Afficher le nombre d’articles qu’il y a eu pour chaque triplet (année, pays de l’évènement, langue de l’article) :
+SELECT year, country, article_language, COUNT(article_url) AS num_articles FROM requete_1_articles_year GROUP BY year, country, article_language;
+
+
+#### Question 2 :
+
+- Pour un pays donné en paramètre, affichez les évènements qui y ont eu place triées par le nombre de mentions (tri décroissant) :
+SELECT country, globaleventid, nummentions FROM requete_2 WHERE country='France';
+
+- Pour un pays donnée en paramètre, affichez le nombre d'événements et le nombre de mentions par jour (tri croissant sur le jour / tri décroissant sur le nombre de mentions) :
+SELECT country, date, COUNT(globaleventid) AS num_events, SUM(nummentions) AS total_num_mentions FROM requete_2_day WHERE country='France' GROUP BY date;
+
+- Pour un pays donnée en paramètre, affichez le nombre d'événements et le nombre de mentions par mois (tri croissant sur le mois / tri décroissant sur le nombre de mentions) :
+SELECT country, monthyear, COUNT(globaleventid) AS num_events, SUM(nummentions) AS total_num_mentions FROM requete_2_month WHERE country='France' GROUP BY monthyear;
+
+- Pour un pays donnée en paramètre, affichez le nombre d'événements et le nombre de mentions par année (tri croissant sur l'année / tri décroissant sur le nombre de mentions) :
+SELECT country, year, COUNT(globaleventid) AS num_events, SUM(nummentions) AS total_num_mentions FROM requete_2_year WHERE country='France' GROUP BY year;
